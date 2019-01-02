@@ -1,0 +1,95 @@
+## Senzai
+# Set these options to true or false to toggle specific features
+
+traefik_enabled: true
+portainer_enabled: true
+netdata_enabled: true
+watchtower_enabled: false
+duplicati_enabled: true
+
+###
+### General
+###
+# Sets the hostname of senzai install
+senzai_hostname: admin
+
+# Applications will have subdomain SSL certificates created, eg senzai.<your-domain>, portainer.<your-domain>
+senzai_domain: senzai.test
+
+# Sets the timezone for senzai install
+# You can find a list here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+senzai_timezone: America/Los_Angeles
+
+# Update all apt packages when playbook is run
+keep_packages_updated: true
+
+# Will be added to the docker group to give user command line access to docker
+senzai_user: tinypixel
+
+# Your email and domain, used for LetsEncrypt SSL certs
+senzai_email: developers@tinypixel.io
+
+###
+### Docker
+###
+docker_image_directory: "{{ docker_home }}/senzai"
+docker_home: "srv/www"
+docker_storage_driver: overlay2
+
+###
+### Extra Packages
+###
+senzai_extra_packages:
+  - smartmontools
+  - htop
+  - zfsutils-linux
+  - bonnie++
+  - unzip
+  - lm-sensors
+
+###
+### WordPress
+###
+wordpress_db_user: "admin"
+wordpress_db_password: "admin"
+wordpress_db_name: "wordpress"
+wordpress_db_root_password: "root_pass"
+
+###
+### Traefik
+###
+traefik_docker_image: traefik:1.7
+traefik_data_directory: "{{ docker_home }}/traefik"
+
+###
+### Duplicati
+###
+duplicati_data_directory: "{{ docker_home }}/duplicati/config"
+
+###
+### Portainer
+###
+portainer_data_directory: "{{ docker_home }}/portainer/config"
+
+###
+### nginx
+###
+nginx_data_directory: "{{ docker_home }}/nginx"
+
+###
+### Watchtower
+###
+# Sets the 6 field cron schedule to use for checks and updates. This will check at 5am daily.
+watchtower_cron_schedule: 0 0 5 * * *
+
+# Sets the Watchtower Docker start command. Different options can be supplied based on whether you want to receive
+# notifications or not, some examples are provided below. See https://github.com/v2tec/watchtower for more info.
+
+# No notifications
+watchtower_command: "--schedule '{{ watchtower_cron_schedule }}' --debug"
+
+# Email notifications
+# watchtower_command: "--schedule '{{ watchtower_cron_schedule }}' --notifications 'email' --notification-email-from 'ansible@senzai.com' --notification-email-to '{{ senzai_email }}' --notification-email-server 'my.email.server.com' --notification-email-server-port '25' --notification-email-server-user 'email_username' --notification-email-server-password 'top-secret'"
+
+# Slack notifications
+# watchtower_command: "--schedule '{{ watchtower_cron_schedule }}' --notifications 'slack' --notification-slack-hook-url 'https://hooks.slack.com/services/xxx/yyyyyyyyyyyyyyy' --notification-slack-identifier 'senzai'"
