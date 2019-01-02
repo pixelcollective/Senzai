@@ -1,6 +1,5 @@
 group_vars/all.yml
 site
-inventory
 .vagrant
 roles
 .env
