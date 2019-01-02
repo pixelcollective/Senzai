@@ -1,6 +1,6 @@
 <img src="https://tinypixel.io/app/uploads/2019/01/senzai.png" alt="Senzai" />
 
-![Maintenance](https://img.shields.io/badge/maintained%3F-yes-green.svg) [![Gitter](https://img.shields.io/badge/chat-gitter-purple.svg)](https://gitter.im/Tiny-Pixel/senzai) ![License](https://poser.pugx.org/tiny-pixel/wp-performant-media/license) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70a4cc122c2f45a9a0d6d24e2c7c4587)](https://www.codacy.com/app/pixelcollective/senzai?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pixelcollective/senzai&amp;utm_campaign=Badge_Grade)
+![Maintenance](https://img.shields.io/badge/maintained%3F-yes-green.svg) [![Gitter](https://img.shields.io/badge/chat-gitter-purple.svg)](https://gitter.im/Tiny-Pixel/senzai) ![License](https://poser.pugx.org/tiny-pixel/wp-performant-media/license) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ff4206d50f845da9d11587fd3a9e9ac)](https://www.codacy.com/app/pixelcollective/Senzai?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pixelcollective/Senzai&amp;utm_campaign=Badge_Grade)
 
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/pixelcollective/senzai.svg?columns=all)](https://waffle.io/pixelcollective/senzai) 
 
