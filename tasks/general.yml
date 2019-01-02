@@ -1,0 +1,36 @@
+---
+- name: Set login banner
+  template:
+    src: senzai/greeting.txt
+    dest: /etc/motd
+
+- name: Update apt-cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  register: result
+  until: result is succeeded
+
+- name: Upgrade base packages
+  apt:
+    upgrade: true
+    state: latest
+  when: keep_packages_updated
+  tags:
+    - skip_ansible_lint
+
+- name: Install extra packages
+  apt:
+    name: "{{ senzai_extra_packages }}"
+    state: present
+  register: result
+  until: result is succeeded
+
+#  - name: Configure smartmontools
+- name: "Set hostname to {{ senzai_hostname }}"
+  hostname:
+    name: "{{ senzai_hostname }}"
+
+- name: "Set timezone to {{ senzai_timezone }}"
+  timezone:
+    name: "{{ senzai_timezone }}"

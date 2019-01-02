@@ -1,0 +1,40 @@
+---
+- hosts: all
+
+  pre_tasks:
+    - import_tasks: tasks/users.yml
+      tags: users
+
+  roles:
+    - role: geerlingguy.docker
+      tags:
+        - docker
+        - skip_ansible_lint
+
+  tasks:
+  - import_tasks: tasks/general.yml
+    tags: general
+
+  - import_tasks: tasks/docker.yml
+    tags: docker
+
+  - import_tasks: tasks/traefik.yml
+    when: traefik_enabled
+    tags: traefik
+
+  - import_tasks: tasks/portainer.yml
+    when: portainer_enabled
+    tags: portainer
+
+  - import_tasks: tasks/netdata.yml
+    when: netdata_enabled
+    tags: netdata
+
+  - import_tasks: tasks/duplicati.yml
+    when: duplicati_enabled
+    tags: duplicati
+
+  - import_tasks: tasks/wordpress.yml
+    when: wordpress_enabled
+    tags: wordpress
+    

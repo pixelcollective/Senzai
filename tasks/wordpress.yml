@@ -1,0 +1,56 @@
+---
+- name: Create WordPress group account
+  group:
+    name: wordpress
+    gid: 1309
+    state: present
+
+- name: Create WordPress user account
+  user:
+    name: wordpress
+    uid: 1309
+    state: present
+    system: yes
+    update_password: on_create
+    create_home: no
+    group: wordpress
+
+- name: Create WordPress Directory
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ wordpress_data_directory }}"
+
+- name: Start WordPress MariaDB Container
+  docker_container:
+    name: wordpress_mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: "{{ wordpress_db_name }}"
+      MYSQL_USER: "{{ wordpress_db_user }}"
+      MYSQL_PASSWORD: "{{ wordpress_db_password }}"
+      MYSQL_RANDOM_ROOT_PASSWORD: "{{ wordpress_db_root_password }}"
+
+- name: Start WordPress Container
+  docker_container:
+    name: wordpress
+    image: wordpress:5.0.2-php7.2-fpm
+    pull: true
+    ports:
+      - "8080:80"
+    volumes:
+      - "{{ wordpress_data_directory }}:/wordpress"
+    environment:
+      WORDPRESS_DB_HOST: wordpress_mysql
+      WORDPRESS_DB_USER: "{{ wordpress_db_user }}"
+      WORDPRESS_DB_PASSWORD: "{{ wordpress_db_password }}"
+      WORDPRESS_DB_NAME: "{{ wordpress_db_name }}"
+    labels:
+      traefik.backend: "wordpress"
+      traefik.frontend.rule: "Host:{{ wordpress_default_subdomain }}.{{ senzai_domain }}"
+      traefik.enable: "true"
+      traefik.port: "80"
+    restart_policy: unless-stopped
+    memory: 1g

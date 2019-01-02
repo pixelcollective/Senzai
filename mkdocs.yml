@@ -1,0 +1,21 @@
+site_name: 'Senzai'
+site_description: 'WordPress for days'
+site_author: 'Tiny Pixel Collective'
+site_url: 'https://tinypixel.io/senzai'
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+repo_name: 'Senzai'
+repo_url: 'https://github.com/pixelcollective/senzai'
+copyright: 'Copyright &copy; 2019 Tiny Pixel Collective, LLC'
+extra:
+  manifest: 'manifest.webmanifest'
+  social:
+    - type: 'github'
+      link: 'https://github.com/pixelcollective'

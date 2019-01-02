@@ -1,0 +1,18 @@
+group_vars/all.yml
+site
+inventory
+.vagrant
+roles
+.env
+.vault_pass
+*.retry
+*.log
+
+# vscode
+.vscode
+
+# Vim
+[._]sw[a-p]
+
+# Session
+Session.vim

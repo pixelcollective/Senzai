@@ -1,0 +1,14 @@
+---
+- name: Create senzai group
+  group:
+    name: senzai
+    state: present
+
+- name: Create senzai user
+  user:
+    name: senzai
+    state: present
+    system: yes
+    update_password: on_create
+    create_home: no
+    group: senzai
