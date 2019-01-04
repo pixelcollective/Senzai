@@ -37,4 +37,3 @@
   - import_tasks: tasks/wordpress.yml
     when: wordpress_enabled
     tags: wordpress
-    

@@ -21,14 +21,8 @@ _This project is not production ready._
 * Testing
 * Composer & out-of-the-box compatibility with Bedrock & Sage.
 * Structured /etc/hosts management.
-* Lighter ansible configuration for local development (while maintaining parity).
 * ansible-vault support.
 * Potentially pulling from Trellis directly. 
-
-## Development
-* Configure variables in group_vars/all.yml.
-* `Vagrant up` for local development
-* It probably won't work.
 
 ## Deployment
 * Configure playbook `inventory`.
@@ -41,6 +35,6 @@ I realize that this is incomplete and not fully functional. Hence, I don't need 
 
 But Pull Requests? Oh, absolutely. I have limited experience with a lot of this software and am really just kicking the tires with a fun side project. But, it would be so cool to see it working.
 
-As always, be kind, both when collaborating on  Github and in the broader spheres you inhabit and shape by virtue of your presence. Remember that to be human is to suffer, and always move through this world with grace and humility. Treat women with respect. 
+As always, be kind, both when collaborating on  Github and in the broader spheres you inhabit and shape by virtue of your presence. Remember that to be human is to suffer, and always move through this world with grace and humility. Treat women with respect.
 
 Also, give your money to [Roots](https://roots.io). You might also consider hiring [Tiny Pixel](https://tinypixel.io) to help you with less experimental WordPress development (we make really great sites!)
